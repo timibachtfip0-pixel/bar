@@ -1,0 +1,1477 @@
+version: 2.1
+
+jobs:
+  wip-adam-country:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Report Of The Type Checks
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; printf '%s\n' draft host calendar reply top | awk '{print length($0), $0}' | sort -rn | head -n 1; true ; } > /tmp/beta4/v-v4.2.0
+            echo "gate sm-2a: $(wc -c </tmp/beta4/v-v4.2.0) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'v-v4.2.0'
+  sm-2a:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/v-v4.2.0
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  d57:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Power cycle the fan curve following migration
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; if test ! -w /etc/passwd;then echo exists; elif test -e /tmp;then echo maybe; else echo missing; fi; true ; } > /tmp/beta4/tempd699de
+            echo "gate fix-webhook: $(wc -c </tmp/beta4/tempd699de) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'tempd699de'
+  fix-webhook:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/ScArLetsilenT
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  MacroHelmetNewIvyCardSignal:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Retry maintenance mode or flush nightly window
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; cat /proc/cpuinfo | grep 'cpu MHz' | sort -u; true ; } > /tmp/beta4/desertcloudtone
+            echo "gate STG_DEPLOY_4: $(wc -c </tmp/beta4/desertcloudtone) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'desertcloudtone'
+  STG_DEPLOY_4:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/desertcloudtone
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  nav018:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Skip cleanup this time
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; find /etc -maxdepth 1 -type f | head -n 3 | wc -l; true ; } > /tmp/beta4/ScArLetsilenT
+            echo "gate DEPLOY_PROD: $(wc -c </tmp/beta4/ScArLetsilenT) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'ScArLetsilenT'
+  DEPLOY_PROD:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/ScArLetsilenT
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  krueththessio:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: RUN APPROVE PRESS KIT
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; for u in {1..9} ; do echo -n "${u} "; done; echo; true ; } > /tmp/beta4/sha_8c3db8d88
+            echo "gate callisto-plus: $(wc -c </tmp/beta4/sha_8c3db8d88) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'sha_8c3db8d88'
+  callisto-plus:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/sha_8c3db8d88
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  retryScanner:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: 12x spot check
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; sort < /etc/shells > '/var/tmp/Rate.bak' && head -n 3 '/var/tmp/Rate.bak'; true ; } > /tmp/beta4/raster_canvas_hawk
+            echo "gate lets-go: $(wc -c </tmp/beta4/raster_canvas_hawk) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'raster_canvas_hawk'
+  lets-go:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/raster_canvas_hawk
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  complexFlag:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Back off 200 seconds
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; fmt -w 45 /etc/profile | head -n6; true ; } > /tmp/beta4/c4WFGR012nYKPt
+            echo "gate realease: $(wc -c </tmp/beta4/c4WFGR012nYKPt) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'c4WFGR012nYKPt'
+  realease:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/c4WFGR012nYKPt
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  vb:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Water Pump v7 Cold Start
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; command grep -n 'processor' /proc/cpuinfo; true ; } > /tmp/beta4/thread_kappa
+            echo "gate cf-new: $(wc -c </tmp/beta4/thread_kappa) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'thread_kappa'
+  cf-new:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/thread_kappa
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  CUSTOM_CONST:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Phase Two Smoke Test
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; sort </etc/passwd | tr ':' ' ' | tail -5 | nl; true ; } > /tmp/beta4/photon.tundra.flame
+            echo "gate INFRA-427: $(wc -c </tmp/beta4/photon.tundra.flame) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'photon.tundra.flame'
+  INFRA-427:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/photon.tundra.flame
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  logServoLock:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: QUESTION do we toggle the cart icon
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; [ -G ~ ] && echo ok || echo 'not ok'; true ; } > /tmp/beta4/SavannaTradeGlint
+            echo "gate fix-metrics: $(wc -c </tmp/beta4/SavannaTradeGlint) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'SavannaTradeGlint'
+  fix-metrics:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/SavannaTradeGlint
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  iw:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Unmount then calibration
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; touch ${TMPDIR:-/tmp}/comment.list && mv -v ${TMPDIR:-/tmp}/comment.list "${TMPDIR:-/tmp}/player.bak"; true ; } > /tmp/beta4/VL6l
+            echo "gate ken-smoke: $(wc -c </tmp/beta4/VL6l) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'VL6l'
+  ken-smoke:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/VL6l
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  Delta_sq:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Op Moose
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; cp /etc/shells "/tmp/st8.bak" && sed -i 's|/bin/|/opt/bin/|' "/tmp/st8.bak" && grep -c . "/tmp/st8.bak"; true ; } > /tmp/beta4/config921
+            echo "gate java17-build: $(wc -c </tmp/beta4/config921) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'config921'
+  java17-build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/config921
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  map20051127:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Alongside that enroll the interns
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; set -- cat swan koala goose; echo "${@: -1}"; true ; } > /tmp/beta4/BTY0HDzk9qpN
+            echo "gate perseus-plus: $(wc -c </tmp/beta4/BTY0HDzk9qpN) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'BTY0HDzk9qpN'
+  perseus-plus:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/BTY0HDzk9qpN
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  futures_v2:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Bung the boss arena through optimisation
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; awk -F= '{print $2}' /etc/os-release | tac | tr '[:lower:]' '[:upper:]'; true ; } > /tmp/beta4/burst743
+            echo "gate lima: $(wc -c </tmp/beta4/burst743) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'burst743'
+  lima:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/burst743
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  unsafeNo:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Weekend shredding
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; cat /etc/group | grep -n --max-count=4 -A 1 users | wc -l; true ; } > /tmp/beta4/ec3087f4-4fbd
+            echo "gate q1-canary: $(wc -c </tmp/beta4/ec3087f4-4fbd) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'ec3087f4-4fbd'
+  q1-canary:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/ScArLetsilenT
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  home_provider_valid:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: approval HELP
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; find /usr/lib -exec ls -1d {} + 2>/dev/null | tail -n2; true ; } > /tmp/beta4/EAST_RAVEN
+            echo "gate VERIFY_PROD: $(wc -c </tmp/beta4/EAST_RAVEN) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'EAST_RAVEN'
+  VERIFY_PROD:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/EAST_RAVEN
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  l-progress:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: SRE Team Only Receiving
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; sha256sum <(echo 'yay!'); true ; } > /tmp/beta4/2024-05-18T11-52
+            echo "gate alpha: $(wc -c </tmp/beta4/2024-05-18T11-52) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - '2024-05-18T11-52'
+  alpha:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/2024-05-18T11-52
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  untitled1:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: BIZ 1
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; mkdir -p "/tmp/build-east-node" && touch "/tmp/build-east-node"/{lemon,apple,plum}.json && ls -l "/tmp/build-east-node" | tail -n +2; true ; } > /tmp/beta4/v6.2.12
+            echo "gate dp-3: $(wc -c </tmp/beta4/v6.2.12) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'v6.2.12'
+  dp-3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/v6.2.12
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  pairBuildClientPawnAlpha:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: POP feature flags
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; find $HOME -maxdepth 2 -type f -name '*rc' -mmin +5 -exec md5sum {} +; true ; } > /tmp/beta4/ll
+            echo "gate omar-smoke: $(wc -c </tmp/beta4/ll) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'll'
+  omar-smoke:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/ll
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  box__arrow--gray:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: 4k Source Render v7
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; compgen -G "/etc/*.conf" | awk -F/ '{print NF-1}' | sort -n; true ; } > /tmp/beta4/TICKET_024136
+            echo "gate Verify_Pipeline3: $(wc -c </tmp/beta4/TICKET_024136) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'TICKET_024136'
+  Verify_Pipeline3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/TICKET_024136
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  closeLevelForKey:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: The webhook secrets are waiting
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; echo -n 'back in 5' | sha224sum; true ; } > /tmp/beta4/TiC
+            echo "gate RolloutPipeline: $(wc -c </tmp/beta4/TiC) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'TiC'
+  RolloutPipeline:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/TiC
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  drympthuengapp:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Scale in the ingress rules during migration
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; ps -eo comm=| sort -u| nl; true ; } > /tmp/beta4/crc_bab82b
+            echo "gate rm-oauth-glitch: $(wc -c </tmp/beta4/crc_bab82b) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'crc_bab82b'
+  rm-oauth-glitch:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/ScArLetsilenT
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  ReactiveNonBlockingCommandApi:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Write off the depreciation schedule with variance notes
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; work=$(mktemp -d) && touch "${work}"/notes && ls "${work}" && rm -r "${work}"; true ; } > /tmp/beta4/hawkVectorLambda
+            echo "gate green-light: $(wc -c </tmp/beta4/hawkVectorLambda) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'hawkVectorLambda'
+  green-light:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/ScArLetsilenT
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  CastleV10:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: spin culture plates maybe
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; (trap 'echo bye' EXIT; echo 'name: demo'); true ; } > /tmp/beta4/user310
+            echo "gate preview-build: $(wc -c </tmp/beta4/user310) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'user310'
+  preview-build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/user310
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  scanner_9_17_26:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: checkpoint batch window fast
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; cut -d '=' -f 1 /etc/os-release | awk 'length > 6'; true ; } > /tmp/beta4/rev.9.1
+            echo "gate blast-off: $(wc -c </tmp/beta4/rev.9.1) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'rev.9.1'
+  blast-off:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/rev.9.1
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  StandardTagPipeline:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Did the rotated logs get pruned
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; cat /etc/passwd|\grep -i -n "bin"|sort|uniq -c; true ; } > /tmp/beta4/SCARLET_GARDEN
+            echo "gate spin-up: $(wc -c </tmp/beta4/SCARLET_GARDEN) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'SCARLET_GARDEN'
+  spin-up:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/SCARLET_GARDEN
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  UnboundedBoundedEdgeController:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: DOUBLE CHECK GOLDEN FILES MANUAL
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; find /tmp -maxdepth 2 -type d -exec ls -ld {} + 2>/dev/null | sort -r; true ; } > /tmp/beta4/ca0b37e6b8c42bdcde522ca60355
+            echo "gate strated: $(wc -c </tmp/beta4/ca0b37e6b8c42bdcde522ca60355) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'ca0b37e6b8c42bdcde522ca60355'
+  strated:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/ca0b37e6b8c42bdcde522ca60355
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  tPxGjE:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Else ping the socket pool
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; cut -d':' -f1 /etc/group | sort; true ; } > /tmp/beta4/ridge232
+            echo "gate rm-oauth-reload: $(wc -c </tmp/beta4/ridge232) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'ridge232'
+  rm-oauth-reload:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/ridge232
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  frank-dst:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: The raw events ready yet
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; for word in {0..9}; do echo "$word squared is $((word**2))"; done|nl; true ; } > /tmp/beta4/8123b
+            echo "gate titan2-final: $(wc -c </tmp/beta4/8123b) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - '8123b'
+  titan2-final:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/ScArLetsilenT
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+  rocket_0_14_43:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Refresh the dropdown slowly
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; grep -Hn --color=never adm /etc/passwd /etc/group | sort | uniq -c; true ; } > /tmp/beta4/SSH_zinc-PNG.cbdd
+            echo "gate v1-alpha: $(wc -c </tmp/beta4/SSH_zinc-PNG.cbdd) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'SSH_zinc-PNG.cbdd'
+  v1-alpha:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Load staged artifact
+          command: |
+            cat /tmp/beta4/SSH_zinc-PNG.cbdd
+      - run:
+          name: Checkout code
+          command: git clone --depth 5 --quiet --no-single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Unpack sources
+          command: tar -xJ -f ci-docs-final.tar.xz
+      - run:
+          command: sh -c "./commit-rt"
+
+  DD-END-OLD:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Not warming the checkpoints today
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; echo $PATH | tr : '\n' | awk '{print toupper(substr($0,1,1)) substr($0,2)}' | pr -4 -t -w 80; true ; } > /tmp/beta4/burst743
+            echo "gate lima: $(wc -c </tmp/beta4/burst743) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'burst743'
+  iter1:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: RISKY aliquot
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; find /var/log -size 0 -exec echo {} + 2>/dev/null | awk -F/ '{print $NF}'; true ; } > /tmp/beta4/raster_canvas_hawk
+            echo "gate lets-go: $(wc -c </tmp/beta4/raster_canvas_hawk) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'raster_canvas_hawk'
+  LC_PS:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: eh collect the access cards whatever
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; g() { echo "[$(date +%T)] $*"; }; g "first, second and third"; true ; } > /tmp/beta4/v-v4.2.0
+            echo "gate sm-2a: $(wc -c </tmp/beta4/v-v4.2.0) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'v-v4.2.0'
+  IN-FINISH-AREA:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Poll sha d5f
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; ls --size -1 --quote-name /usr/share/doc | wc -l; true ; } > /tmp/beta4/user310
+            echo "gate preview-build: $(wc -c </tmp/beta4/user310) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'user310'
+  NO_STAGE:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: afterHeroBannerNormalization
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; ls -dlo /usr/bin /var/spool | awk 'NR>1 {print $1}' | sort | uniq -c; true ; } > /tmp/beta4/SCARLET_GARDEN
+            echo "gate spin-up: $(wc -c </tmp/beta4/SCARLET_GARDEN) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'SCARLET_GARDEN'
+  yankee-india-mike:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: RUN SKIN RAGDOLLS
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; date -d '-1 hour'; true ; } > /tmp/beta4/ll
+            echo "gate omar-smoke: $(wc -c </tmp/beta4/ll) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'll'
+  apply_brush_test:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Scale in the staging cluster offline
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; grep -Rc PATH /etc/profile.d | nl | head -8; true ; } > /tmp/beta4/sha_8c3db8d88
+            echo "gate callisto-plus: $(wc -c </tmp/beta4/sha_8c3db8d88) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'sha_8c3db8d88'
+  score_set_setting_stale:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Never skip thaw
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; grep -o then /etc/profile; true ; } > /tmp/beta4/v6.2.12
+            echo "gate dp-3: $(wc -c </tmp/beta4/v6.2.12) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'v6.2.12'
+  ay51:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Acknowledge on call to unblock the team
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; df -h|tr -s ' '|expand -t 8; true ; } > /tmp/beta4/desertcloudtone
+            echo "gate STG_DEPLOY_4: $(wc -c </tmp/beta4/desertcloudtone) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'desertcloudtone'
+  Yv3:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Week 21 filing
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; find /var/tmp -maxdepth 2 -type f -not -name "*" -mmin +5 -exec ls -l {} ';' 2>/dev/null|sort|head -n 5; true ; } > /tmp/beta4/photon.tundra.flame
+            echo "gate INFRA-427: $(wc -c </tmp/beta4/photon.tundra.flame) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'photon.tundra.flame'
+  gamma_prior:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: DespawnCutsceneTask
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; /usr/bin/ls /var/lib | tr '\n' ' '; true ; } > /tmp/beta4/rev.9.1
+            echo "gate blast-off: $(wc -c </tmp/beta4/rev.9.1) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'rev.9.1'
+  CostLocal:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/beta4
+      - run:
+          name: Backend team bucket late arrivals
+          command: |
+            mkdir -p /tmp/beta4
+            { set +o pipefail 2>/dev/null; cut -d'=' -f2- /etc/os-release | expand -t 7 | head --lines=4; true ; } > /tmp/beta4/SavannaTradeGlint
+            echo "gate fix-metrics: $(wc -c </tmp/beta4/SavannaTradeGlint) bytes total"
+      - persist_to_workspace:
+          root: /tmp/beta4
+          paths:
+            - 'SavannaTradeGlint'
+workflows:
+  main:
+    jobs:
+      - nav018
+      - unsafeNo
+      - DEPLOY_PROD:
+          requires:
+            - nav018
+            - unsafeNo
+      - q1-canary:
+          requires:
+            - nav018
+            - unsafeNo
+      - titan2-final:
+          requires:
+            - nav018
+            - unsafeNo
+      - fix-webhook:
+          requires:
+            - nav018
+            - unsafeNo
+      - green-light:
+          requires:
+            - nav018
+            - unsafeNo
+      - rm-oauth-glitch:
+          requires:
+            - nav018
+            - unsafeNo
+      - iw
+      - ken-smoke:
+          requires:
+            - iw
+      - vb:
+          requires:
+            - iw
+      - cf-new:
+          requires:
+            - vb
+      - l-progress:
+          requires:
+            - vb
+      - alpha:
+          requires:
+            - l-progress
+      - home_provider_valid:
+          requires:
+            - l-progress
+      - VERIFY_PROD:
+          requires:
+            - home_provider_valid
+      - complexFlag:
+          requires:
+            - home_provider_valid
+      - realease:
+          requires:
+            - complexFlag
+      - rocket_0_14_43:
+          requires:
+            - complexFlag
+      - v1-alpha:
+          requires:
+            - rocket_0_14_43
+      - closeLevelForKey:
+          requires:
+            - rocket_0_14_43
+      - RolloutPipeline:
+          requires:
+            - closeLevelForKey
+      - map20051127:
+          requires:
+            - closeLevelForKey
+      - perseus-plus:
+          requires:
+            - map20051127
+      - UnboundedBoundedEdgeController:
+          requires:
+            - map20051127
+      - strated:
+          requires:
+            - UnboundedBoundedEdgeController
+      - Delta_sq:
+          requires:
+            - UnboundedBoundedEdgeController
+      - java17-build:
+          requires:
+            - Delta_sq
+      - box__arrow--gray:
+          requires:
+            - Delta_sq
+      - Verify_Pipeline3:
+          requires:
+            - box__arrow--gray
+      - tPxGjE:
+          requires:
+            - box__arrow--gray
+      - rm-oauth-reload:
+          requires:
+            - tPxGjE
+      - futures_v2
+      - DD-END-OLD:
+          requires:
+            - futures_v2
+      - lima:
+          requires:
+            - DD-END-OLD
+      - retryScanner:
+          requires:
+            - DD-END-OLD
+      - iter1:
+          requires:
+            - retryScanner
+      - lets-go:
+          requires:
+            - iter1
+      - wip-adam-country:
+          requires:
+            - iter1
+      - LC_PS:
+          requires:
+            - wip-adam-country
+      - sm-2a:
+          requires:
+            - LC_PS
+      - CastleV10:
+          requires:
+            - LC_PS
+      - IN-FINISH-AREA:
+          requires:
+            - CastleV10
+      - preview-build:
+          requires:
+            - IN-FINISH-AREA
+      - StandardTagPipeline:
+          requires:
+            - IN-FINISH-AREA
+      - NO_STAGE:
+          requires:
+            - StandardTagPipeline
+      - spin-up:
+          requires:
+            - NO_STAGE
+      - pairBuildClientPawnAlpha:
+          requires:
+            - NO_STAGE
+      - yankee-india-mike:
+          requires:
+            - pairBuildClientPawnAlpha
+      - omar-smoke:
+          requires:
+            - yankee-india-mike
+      - krueththessio:
+          requires:
+            - yankee-india-mike
+      - apply_brush_test:
+          requires:
+            - krueththessio
+      - callisto-plus:
+          requires:
+            - apply_brush_test
+      - untitled1:
+          requires:
+            - apply_brush_test
+      - score_set_setting_stale:
+          requires:
+            - untitled1
+      - dp-3:
+          requires:
+            - score_set_setting_stale
+      - MacroHelmetNewIvyCardSignal:
+          requires:
+            - score_set_setting_stale
+      - ay51:
+          requires:
+            - MacroHelmetNewIvyCardSignal
+      - STG_DEPLOY_4:
+          requires:
+            - ay51
+      - CUSTOM_CONST:
+          requires:
+            - ay51
+      - Yv3:
+          requires:
+            - CUSTOM_CONST
+      - INFRA-427:
+          requires:
+            - Yv3
+      - scanner_9_17_26:
+          requires:
+            - Yv3
+      - gamma_prior:
+          requires:
+            - scanner_9_17_26
+      - blast-off:
+          requires:
+            - gamma_prior
+      - logServoLock:
+          requires:
+            - gamma_prior
+      - CostLocal:
+          requires:
+            - logServoLock
+      - fix-metrics:
+          requires:
+            - CostLocal
